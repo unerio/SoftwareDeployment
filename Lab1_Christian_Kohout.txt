@@ -1,0 +1,7 @@
+https://github.com/unerio/SoftwareDeployment
+
+Folgende Commands wurden im Ordner Lab1 über die Powershell ausgeführt, um den Storage account zu erstellen:
+
+New-AzResourceGroup -Name SoftwareDeplResourceGroup -Location northeurope
+
+New-AzResourceGroupDeployment -ResourceGroupName SoftwareDeplResourceGroup -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
