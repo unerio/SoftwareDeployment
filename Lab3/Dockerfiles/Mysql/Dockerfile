@@ -1,9 +1,5 @@
 FROM debian:jessie
 
-ENV DB_NAME=userdb
-ENV DB_USER=testuser
-ENV DB_PASSWORD=password1234
-
 COPY docker-entrypoint.sh docker-entrypoint.sh
 COPY init-database.sql /docker-entrypoint-initdb.d/
 RUN export DEBIAN_FRONTEND="noninteractive"

@@ -3,6 +3,12 @@ version: '3.3'
 services:
    db:
      image: mymysql:v01
+     ports:
+       - "3306:3306"
+     volumes:
+       - type: volume
+         source: dbdata
+         target: /var/lib/mysql
      restart: always
      environment:
        MYSQL_ROOT_PASSWORD: root
@@ -16,6 +22,13 @@ services:
      image: mywp:v01
      ports:
        - "8080:80"
+     volumes:
+       - type: volume
+         source: wpconfig
+         target: /etc/wordpress/
+       - type: volume
+         source: wpuploads
+         target: /var/www/html/wp-content/uploads/
      restart: always
      environment:
        WORDPRESS_DB_HOST: db:3306
@@ -23,4 +36,6 @@ services:
        WORDPRESS_DB_PASSWORD: wordpress
        WORDPRESS_DB_NAME: wordpress
 volumes:
-    db_data: {}
+    dbdata:
+    wpconfig:
+    wpuploads:
